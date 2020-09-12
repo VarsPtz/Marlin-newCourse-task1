@@ -2,6 +2,7 @@
 $items = [
   [
     "is_first_item" => true,
+    "is_last_item" => false,
     "title" => "My tasks",
     "value" => "130 / 500",
     "background_color" => "bg-fusion-400",
@@ -12,6 +13,7 @@ $items = [
   ],
   [
     "is_first_item" => false,
+    "is_last_item" => false,
     "title" => "Transfered",
     "value" => "440 TB",
     "background_color" => "bg-success-500",
@@ -22,6 +24,7 @@ $items = [
   ],
   [
     "is_first_item" => false,
+    "is_last_item" => false,
     "title" => "Bugs Squashed",
     "value" => "77%",
     "background_color" => "bg-info-400",
@@ -32,6 +35,7 @@ $items = [
   ],
   [
     "is_first_item" => false,
+    "is_last_item" => true,
     "title" => "User Testing",
     "value" => "7 days",
     "background_color" => "bg-primary-400",
@@ -83,7 +87,7 @@ $items = [
               <?php echo $item["title"]; ?>
               <span class="d-inline-block ml-auto"><?php echo $item['value']; ?></span>
             </div>
-            <div class="progress progress-sm mb-3">
+            <div class="progress progress-sm <?php if ($item['is_last_item']) echo 'mb-g'; else echo 'mb-3'; ?>">
               <div class="progress-bar <?php echo $item['background_color']; ?>" role="progressbar"
                    style="width: <?php echo $item['width']; ?>;" aria-valuenow="<?php echo $item['value_now']; ?>"
                    aria-valuemin="<?php echo $item['value_min']; ?>"
