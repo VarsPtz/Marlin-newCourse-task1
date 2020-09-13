@@ -1,54 +1,11 @@
 <?php
-$people = [
-  [
-    "image" => "img/demo/authors/sunny.png",
-    "image_alt" => "Sunny A.",
-    "name" => "Sunny A. (UI/UX Expert)",
-    "job_title" => "Lead Author",
-    "twitter_link_href" => "https://twitter.com/@myplaneticket",
-    "twitter_link_text" => "@myplaneticket",
-    "email_link_href" => "https://wrapbootstrap.com/user/myorange",
-    "email_link_text" => '<i class="fal fa-envelope"></i>',
-    "email_link_title" => "Contact Sunny",
-    "status" => "active"
-  ],
-  [
-    "image" => "img/demo/authors/josh.png",
-    "image_alt" => "Jos K.",
-    "name" => "Jos K. (ASP.NET Developer)",
-    "job_title" => "Partner &amp; Contributor",
-    "twitter_link_href" => "https://twitter.com/@atlantez",
-    "twitter_link_text" => "@atlantez",
-    "email_link_href" => "https://wrapbootstrap.com/user/Walapa",
-    "email_link_text" => '<i class="fal fa-envelope"></i>',
-    "email_link_title" => "Contact Jos",
-    "status" => "active"
-  ],
-  [
-    "image" => "img/demo/authors/jovanni.png",
-    "image_alt" => "Jovanni Lo",
-    "name" => "Jovanni L. (PHP Developer)",
-    "job_title" => "Partner &amp; Contributor",
-    "twitter_link_href" => "https://twitter.com/@lodev09",
-    "twitter_link_text" => "@lodev09",
-    "email_link_href" => "https://wrapbootstrap.com/user/lodev09",
-    "email_link_text" => '<i class="fal fa-envelope"></i>',
-    "email_link_title" => "Contact Jovanni",
-    "status" => "banned"
-  ],
-  [
-    "image" => "img/demo/authors/roberto.png",
-    "image_alt" => "Roberto R",
-    "name" => "Roberto R. (Rails Developer)",
-    "job_title" => "Partner &amp; Contributor",
-    "twitter_link_href" => "https://twitter.com/@sildur",
-    "twitter_link_text" => "@sildur",
-    "email_link_href" => "https://wrapbootstrap.com/user/sildur",
-    "email_link_text" => '<i class="fal fa-envelope"></i>',
-    "email_link_title" => "Contact Roberto",
-    "status" => "banned"
-  ],
-];
+$pdo = new PDO("mysql:host=localhost;dbname=marlin-newcourse-1", "root", "");
+$sql = "SELECT * FROM people";
+$statement = $pdo->prepare($sql);
+$statement->execute();
+//var_dump($statement->fetchAll(PDO::FETCH_ASSOC));die;
+$people = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,9 +26,9 @@ $people = [
   <link rel="stylesheet" media="screen, print" href="css/fa-brands.css">
   <link rel="stylesheet" media="screen, print" href="css/fa-regular.css">
   <style>
-    .banned {
-        opacity: .4;
-    }
+      .banned {
+          opacity: .4;
+      }
   </style>
 </head>
 <body class="mod-bg-1 mod-nav-link ">
